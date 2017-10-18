@@ -28,7 +28,8 @@ public class Vehiculo {
         this.numPasajeros = numPasajeros;
     }
     
-    public String toString()
+    
+    public String toHtml()
     {
         return "<html><b>Nombre del Vehiculo:</b> " + this.nombre + "<br>" +
                 "<b>Numero de llantas:</b> " + this.numllantas + "<br>" +
@@ -36,6 +37,17 @@ public class Vehiculo {
                 "<b>Tiene cajon:</b> " + this.cajon + "<br>" + 
                 "<b>Tiene motor:</b> " + this.motor + "<br>" +
                 "<b>Capacidad de pasajeros:</b> " + this.numPasajeros + "<html>";
+               
+    }
+    
+    public String toString()
+    {
+        return "Nombre del Vehiculo:" + this.nombre + "\n" +
+                "Numero de llantas:" + this.numllantas + "\n" +
+                "Numero de puertas:" + Arrays.toString(this.numPuertas)+ "\n" +  
+                "Tiene cajon:" + this.cajon + "\n" + 
+                "Tiene motor:" + this.motor + "\n" +
+                "Capacidad de pasajeros:" + this.numPasajeros + "\n \n";
                
     }
 }

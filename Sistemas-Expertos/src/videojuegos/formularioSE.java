@@ -2,6 +2,8 @@ package videojuegos;
 
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
+import sistemas.expertos.Menu;
+import vehiculos.SistemaVehiculos;
 
 
 public class formularioSE extends javax.swing.JFrame {
@@ -200,7 +202,10 @@ public class formularioSE extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         System.exit(0);
+        Menu.se.setVisible(false);
+        SistemaVehiculos.reset();
+        Menu menu = new Menu();
+        menu.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     

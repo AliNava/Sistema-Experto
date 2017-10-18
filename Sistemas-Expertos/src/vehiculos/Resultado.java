@@ -5,18 +5,27 @@
  */
 package vehiculos;
 
+import sistemas.expertos.Menu;
+
 /**
  *
  * @author ali
  */
 public class Resultado extends javax.swing.JPanel {
 
-    /**
-     * Creates new form texto
-     */
-    public Resultado() {
+ 
+    public Resultado() 
+    {
+        Menu.sv.setTitle("Resultado");
         initComponents();
-        jLabel1.setText(SistemaVehiculos.vehiculos.get(0).toString());
+        jLabel1.setText(SistemaVehiculos.vehiculos.get(0).toHtml());
+    }
+    
+    public Resultado(Vehiculo vehiculo) 
+    {
+        Menu.sv.setTitle("Resultado");
+        initComponents();
+        jLabel1.setText(vehiculo.toHtml());
     }
 
     /**
@@ -68,9 +77,10 @@ public class Resultado extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        SistemaVehiculos.getFrames()[1].setVisible(false);
+        Menu.sv.setVisible(false);
         SistemaVehiculos.reset();
-        SistemaVehiculos.getFrames()[0].setVisible(true);
+        Menu menu = new Menu();
+        menu.setVisible(true);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
 

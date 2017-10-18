@@ -6,6 +6,8 @@
 package sistemas.expertos;
 
 import vehiculos.SistemaVehiculos;
+import videojuegos.HaciaAtras;
+import videojuegos.formularioSE;
 
 /**
  *
@@ -16,8 +18,12 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form menu
      */
+    public static SistemaVehiculos sv = new SistemaVehiculos(true);
+    public static formularioSE se = new formularioSE();
     public Menu() {
+        this.setLocationRelativeTo(null);
         initComponents();
+        
     }
 
     /**
@@ -41,11 +47,18 @@ public class Menu extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistemas-Expertos");
 
         jLabel1.setText("2.- Seleccione el motor de inferencia ");
 
         tipo.add(atras);
+        atras.setSelected(true);
         atras.setText("Encadenamiento hacia atras");
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
 
         tipo.add(adelante);
         adelante.setText("Encadenamiento hacia adelante");
@@ -53,6 +66,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel2.setText("1.- Seleccione el sistema experto ");
 
         sistema.add(vehiculos);
+        vehiculos.setSelected(true);
         vehiculos.setText("Vehiculos");
 
         sistema.add(videojuegos);
@@ -121,24 +135,36 @@ public class Menu extends javax.swing.JFrame {
             if (tipo.isSelected(atras.getModel())) 
             {
                 System.out.println("Vehiculos atras");
+                sv = new SistemaVehiculos(false);
+                sv.setVisible(true);
+                this.setVisible(false);
             }else
             {
                 System.out.println("Vehiculos adelante");
-                SistemaVehiculos sv = new SistemaVehiculos(true);
+                sv = new SistemaVehiculos(true);
                 sv.setVisible(true);
+                this.setVisible(false);
             }
         }else
         {
             if (tipo.isSelected(atras.getModel())) 
             {
-                System.out.println("Juevos atras");
+                HaciaAtras atras =  new HaciaAtras();
+                atras.setVisible(true);
             }else
             {
                 System.out.println("juegos adelante");
+                se = new formularioSE();
+                se.setVisible(true);
+                this.setVisible(false);
             }
         }
-        this.setVisible(false);
+        
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_atrasActionPerformed
 
     /**
      * @param args the command line arguments
