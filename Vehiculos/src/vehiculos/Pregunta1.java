@@ -27,14 +27,17 @@ public class Pregunta1 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Motor = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
 
         jLabel1.setText("¿El vehiculo tiene motor?");
 
+        Motor.add(jRadioButton1);
         jRadioButton1.setText("Si");
 
+        Motor.add(jRadioButton2);
         jRadioButton2.setText("No");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -68,6 +71,7 @@ public class Pregunta1 extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup Motor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
