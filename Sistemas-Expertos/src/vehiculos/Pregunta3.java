@@ -27,6 +27,7 @@ public class Pregunta3 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        numllantas = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -35,12 +36,16 @@ public class Pregunta3 extends javax.swing.JPanel {
 
         jLabel1.setText("¿Cuantas llantas tiene?");
 
+        numllantas.add(jRadioButton1);
         jRadioButton1.setText("0");
 
+        numllantas.add(jRadioButton2);
         jRadioButton2.setText("2");
 
+        numllantas.add(jRadioButton3);
         jRadioButton3.setText("4");
 
+        numllantas.add(jRadioButton4);
         jRadioButton4.setText("6");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -83,5 +88,6 @@ public class Pregunta3 extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.ButtonGroup numllantas;
     // End of variables declaration//GEN-END:variables
 }
