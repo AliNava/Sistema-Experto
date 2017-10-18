@@ -29,28 +29,39 @@ public class Pregunta5 extends javax.swing.JPanel {
 
         numPasajeros = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        dos = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
+        seis = new javax.swing.JRadioButton();
+
+        setMaximumSize(new java.awt.Dimension(250, 200));
+        setMinimumSize(new java.awt.Dimension(250, 200));
+        setPreferredSize(new java.awt.Dimension(250, 200));
 
         jLabel1.setText("¿Cual es su capacidad de pasajeros?");
 
-        numPasajeros.add(jRadioButton1);
-        jRadioButton1.setText("1");
-
-        numPasajeros.add(jRadioButton2);
-        jRadioButton2.setText("2");
+        numPasajeros.add(dos);
+        dos.setText("2");
+        dos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dosActionPerformed(evt);
+            }
+        });
 
         numPasajeros.add(jRadioButton3);
         jRadioButton3.setText("4");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
 
-        numPasajeros.add(jRadioButton4);
-        jRadioButton4.setText("6");
-
-        numPasajeros.add(jRadioButton5);
-        jRadioButton5.setText("100");
+        numPasajeros.add(seis);
+        seis.setText("6");
+        seis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seisActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -61,15 +72,12 @@ public class Pregunta5 extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton2)
+                        .addGap(41, 41, 41)
+                        .addComponent(dos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRadioButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton5)))
+                        .addComponent(seis)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -79,23 +87,34 @@ public class Pregunta5 extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
+                    .addComponent(dos)
                     .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton5))
+                    .addComponent(seis))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void dosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dosActionPerformed
+        SistemaVehiculos.vehiculos= Main.preguntaPasajeros(SistemaVehiculos.vehiculos, 2);
+        SistemaVehiculos.verificarCantidad(this,new Pregunta1());
+    }//GEN-LAST:event_dosActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        SistemaVehiculos.vehiculos= Main.preguntaPasajeros(SistemaVehiculos.vehiculos, 4);
+        SistemaVehiculos.verificarCantidad(this,new Pregunta1());
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void seisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seisActionPerformed
+        SistemaVehiculos.vehiculos= Main.preguntaPasajeros(SistemaVehiculos.vehiculos, 6);
+        SistemaVehiculos.verificarCantidad(this,new Pregunta1());
+    }//GEN-LAST:event_seisActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JRadioButton dos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.ButtonGroup numPasajeros;
+    public static javax.swing.JRadioButton seis;
     // End of variables declaration//GEN-END:variables
 }

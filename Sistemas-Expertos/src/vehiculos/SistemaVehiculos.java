@@ -5,6 +5,9 @@
  */
 package vehiculos;
 
+import java.awt.Component;
+import java.util.ArrayList;
+
 /**
  *
  * @author guss
@@ -14,6 +17,7 @@ public class SistemaVehiculos extends javax.swing.JFrame {
     /**
      * Creates new form SistemaVehiculos
      */
+    static ArrayList<Vehiculo> vehiculos;
     boolean tipo;
     public SistemaVehiculos(boolean tipo) 
     {
@@ -24,6 +28,49 @@ public class SistemaVehiculos extends javax.swing.JFrame {
             this.add(new Pregunta1());
             this.pack();
         
+        }
+            vehiculos = new ArrayList<Vehiculo>()
+            {{
+                add(new Vehiculo("Sedan",4,new int[]{2,4}, false,true,4));
+                add(new Vehiculo("Van",4,new int[]{4}, false,true,6));
+                add(new Vehiculo("PickUp",4,new int[]{4,2},true,true,4));
+                add(new Vehiculo("Bicicleta",2,new int[]{0},false,false,1));
+                add(new Vehiculo("Helicoptero",0,new int[]{2},false,true,4));
+                add(new Vehiculo("Avion",3,new int[]{6,8},false,true,100));
+                add(new Vehiculo("Torton",4,new int[]{2},true,true,2));
+                add(new Vehiculo("Trailer",6,new int[]{2},true,true,2));        
+                add(new Vehiculo("Moto",2,new int[]{0},false,true,1));
+            }};
+                    
+    }
+    
+    public static void reset()
+    {
+        vehiculos = new ArrayList<Vehiculo>()
+            {{
+                add(new Vehiculo("Sedan",4,new int[]{2,4}, false,true,4));
+                add(new Vehiculo("Van",4,new int[]{4}, false,true,6));
+                add(new Vehiculo("PickUp",4,new int[]{4,2},true,true,4));
+                add(new Vehiculo("Bicicleta",2,new int[]{0},false,false,1));
+                add(new Vehiculo("Helicoptero",0,new int[]{2},false,true,4));
+                add(new Vehiculo("Avion",3,new int[]{6,8},false,true,100));
+                add(new Vehiculo("Torton",4,new int[]{2},true,true,2));
+                add(new Vehiculo("Trailer",6,new int[]{2},true,true,2));        
+                add(new Vehiculo("Moto",2,new int[]{0},false,true,1));
+            }};
+    }
+    
+    public static void verificarCantidad(Component back, Component next )
+    {
+        if (Main.verificarCantidad(SistemaVehiculos.vehiculos)) {
+            SistemaVehiculos.getFrames()[1].remove(back);
+            SistemaVehiculos.getFrames()[1].add(next);
+            SistemaVehiculos.getFrames()[1].pack(); 
+        }else 
+        { 
+            SistemaVehiculos.getFrames()[1].remove(back);
+            SistemaVehiculos.getFrames()[1].add(new Resultado());
+            SistemaVehiculos.getFrames()[1].pack();  
         }
     }
 
@@ -37,6 +84,10 @@ public class SistemaVehiculos extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(250, 200));
+        setMinimumSize(new java.awt.Dimension(250, 200));
+        setPreferredSize(new java.awt.Dimension(250, 200));
+        getContentPane().setLayout(new java.awt.CardLayout());
 
         pack();
         setLocationRelativeTo(null);

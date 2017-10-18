@@ -252,8 +252,8 @@ public class Main {
         if(vehiculos.size()==1)
         {
             System.out.println(vehiculos.get(0));
-            System.exit(0);
-            //return false;
+            //System.exit(0);
+            return false;
         }
         return true;
     }

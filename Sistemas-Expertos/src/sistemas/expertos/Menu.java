@@ -137,6 +137,7 @@ public class Menu extends javax.swing.JFrame {
                 System.out.println("juegos adelante");
             }
         }
+        this.setVisible(false);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
