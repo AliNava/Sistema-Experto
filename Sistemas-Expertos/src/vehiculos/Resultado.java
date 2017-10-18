@@ -9,13 +9,14 @@ package vehiculos;
  *
  * @author ali
  */
-public class texto extends javax.swing.JPanel {
+public class Resultado extends javax.swing.JPanel {
 
     /**
      * Creates new form texto
      */
-    public texto() {
+    public Resultado() {
         initComponents();
+        jLabel1.setText(SistemaVehiculos.vehiculos.get(0).toString());
     }
 
     /**
@@ -30,8 +31,18 @@ public class texto extends javax.swing.JPanel {
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
 
-        jToggleButton1.setText("Regresar");
+        setMaximumSize(new java.awt.Dimension(250, 200));
+        setMinimumSize(new java.awt.Dimension(250, 200));
+        setPreferredSize(new java.awt.Dimension(250, 200));
 
+        jToggleButton1.setText("Regresar");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Ponga aqui el texto mi amor <3 ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -39,21 +50,28 @@ public class texto extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(537, Short.MAX_VALUE)
-                .addComponent(jToggleButton1)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToggleButton1)
-                .addGap(6, 6, 6))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        SistemaVehiculos.getFrames()[1].setVisible(false);
+        SistemaVehiculos.reset();
+        SistemaVehiculos.getFrames()[0].setVisible(true);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
