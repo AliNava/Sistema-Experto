@@ -7,7 +7,6 @@ package vehiculos;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -23,6 +22,7 @@ public class Main {
     public static void main(String[] args) 
     {
             Scanner leer = new Scanner(System.in);//instancia run objeto de la clase escaner 
+            ArrayList<Integer> borrar = new ArrayList<Integer>();
             ArrayList<Vehiculo> vehiculos = new ArrayList<Vehiculo>()
             {{
         
@@ -45,63 +45,16 @@ public class Main {
         {
             case 2:
                  System.out.print("El vehiculo tiene motor? (si/no): ");
-                ArrayList<Vehiculo> resultadoMotor=new ArrayList<Vehiculo>();
-                boolean motor;
-                String mot = leer.next();
-                if(mot.equals("si"))
+                borrar = new ArrayList<Integer>();
+                boolean motor = leer.next().equals("si");
+                vehiculos = preguntaMotor(vehiculos,motor);
+                if(verificarCantidad(vehiculos))
                 {
-                    motor=true;
-                }else
-                {
-                    motor=false;
-                }
-                for(Vehiculo vehiculo:vehiculos)
-                {
-                    if (motor== vehiculo.motor) 
-                    {
-                        //System.out.println(vehiculo);
-                        resultadoMotor.add(vehiculo);
-                    } 
-                }
-                if(resultadoMotor.isEmpty())
-                {
-                    System.out.println("No se encontraron vehiculos ");
-                    System.exit(0);                               
-                }else
-                {
-                    if(resultadoMotor.size()==1)
-                    {
-                        System.out.println(resultadoMotor.get(0));
-                        System.exit(0);
-                    }
                     System.out.print("Cuantas puertas tiene? (0,2,4,6,8): ");
                     int numPuertas = leer.nextInt();
-                    ArrayList<Vehiculo> resultadoPuertas = new ArrayList<Vehiculo>();
-                    for (Vehiculo vehiculo : resultadoMotor) 
-                    {
-                        for(int num : vehiculo.numPuertas)
-                        {
-                            if (num ==numPuertas) 
-                            {
-                                resultadoPuertas.add(vehiculo);
-                            }
-                        }
-
-                    }     
-                        //fin de la pregunta puertas
-                    //System.out.println(" Numero de vehiculos con "+ numPuertas + " puertas es: " + resultadoPuertas.size());
-
-                    if(resultadoPuertas.size()== 0) //preguntar si el resultado de puertas esta vacio
-                    {
-                        System.out.println("No se encontraron vehiculos con "+ numPuertas + " puertas.");
-                        System.exit(0);
-                    }else
-                    {   //si no esta vacio preguntar cuantas llantas tiene 
-                        if(resultadoPuertas.size()==1)
-                        {
-                            System.out.println(resultadoPuertas.get(0));
-                            System.exit(0);
-                        }
+                    vehiculos=preguntaPuertas(vehiculos,numPuertas);
+                    if(verificarCantidad(vehiculos))
+                    {    
                         switch(numPuertas)
                         {
                             case 2:
@@ -110,86 +63,27 @@ public class Main {
                             case 4:
                                 System.out.print("Cuantas llantas tiene? (4,6): ");
                             break;
-
                         }
 
                         int numllantas = leer.nextInt();
-                        ArrayList<Vehiculo> resultadollantas = new ArrayList<Vehiculo>();
-                        for(Vehiculo vehiculo : resultadoPuertas)
+                        vehiculos = preguntaLlantas(vehiculos,numllantas);
+                        if(verificarCantidad(vehiculos))
                         {
-                            if(vehiculo.numllantas== numllantas)
-                            {
-                                resultadollantas.add(vehiculo);
-                            }
-                        }
-
-                        if(resultadollantas.isEmpty())
-                        {
-                            System.out.println("No se encontraron vehiculos ");
-                            System.exit(0);
-                        }else
-                        {
-                            if(resultadollantas.size()==1)
-                            {
-                                System.out.println(resultadollantas.get(0));
-                                System.exit(0);
-                            }
                             System.out.print("El vehiculo tiene cajones? (si/no): ");
-                            ArrayList<Vehiculo> resultadoCajon =new ArrayList<Vehiculo>();
-                            boolean cajones;
-                            String res = leer.next();
-                            if(res.equals("si"))
+                            boolean cajones  = leer.next().equals("si");
+                            vehiculos = preguntaCajones(vehiculos,cajones);
+                            if(verificarCantidad(vehiculos))
                             {
-                                cajones=true;
-                            }else
-                            {
-                                cajones=false;
-                            }
-                            for(Vehiculo vehiculo : resultadollantas )
-                            {
-                            if(vehiculo.cajon== cajones )
-                            {
-                                resultadoCajon.add(vehiculo);
-                                //System.out.println(vehiculo);
-                            }
-                            }
-                            if(resultadollantas.isEmpty())
-                            {
-                                System.out.println("No se encontraron vehiculos ");
-                                System.exit(0);
-
-                            }else
-                            {
-                                if(resultadoCajon.size()==1)
-                                {
-                                    System.out.println(resultadoCajon.get(0));
-                                    System.exit(0);
-                                }
                                 if(cajones)
                                 {
                                     System.out.print("Capacidad de pasajeros (2,4): ");
                                 }else
                                 {
-                                    System.out.print("Capacidad de pasajeros (2,4,6): ");
+                                    System.out.print("Capacidad de pasajeros (4,6): ");
                                 }
                                 int numPasajeros= leer.nextInt();
-                                ArrayList<Vehiculo> resultadoPasajeros= new ArrayList<Vehiculo>();
-                                for(Vehiculo vehiculo : resultadoCajon)
-                                {
-                                    if(vehiculo.numPasajeros== numPasajeros)
-                                    {
-                                        resultadoPasajeros.add(vehiculo);
-                                    }
-                                }
-                                if(resultadoPasajeros.size()==0)
-                                {
-                                    System.out.println("No se encontraron vehiculos ");
-                                    System.exit(0);
-
-                                }else
-                                {
-                                    System.out.println(resultadoPasajeros.get(0));
-                                }
+                                vehiculos= preguntaPasajeros(vehiculos,numPasajeros);
+                                verificarCantidad(vehiculos);
                             }
                         }
                     }
@@ -208,7 +102,6 @@ public class Main {
                 int itemSeleccionado = leer.nextInt();
                 Vehiculo vehiculoSeleccionado = vehiculos.get(itemSeleccionado);
                 System.out.println(vehiculoSeleccionado.nombre);
-                ArrayList<Integer> borrar = new ArrayList<Integer>();
                 for(Vehiculo vehiculo : vehiculos)
                 {
                     if(vehiculo.motor != vehiculoSeleccionado.motor)
@@ -216,7 +109,7 @@ public class Main {
                         borrar.add(vehiculos.indexOf(vehiculo));
                     }
                 }
-                Collections.sort(borrar);
+                
                 for(int i =borrar.size()-1;i>=0;i--)
                 {
                     vehiculos.remove(vehiculos.get(borrar.get(i)));
@@ -242,7 +135,7 @@ public class Main {
                         borrar.add(vehiculos.indexOf(vehiculo));
                     } 
                 }
-                Collections.sort(borrar);
+                
                 for(int i =borrar.size()-1;i>=0;i--)
                 {
                     vehiculos.remove(vehiculos.get(borrar.get(i)));
@@ -260,7 +153,7 @@ public class Main {
                            borrar.add(vehiculos.indexOf(vehiculo));
                         }
                 }
-                Collections.sort(borrar);
+                
                 for(int i =borrar.size()-1;i>=0;i--)
                 {
                     vehiculos.remove(vehiculos.get(borrar.get(i)));
@@ -278,7 +171,7 @@ public class Main {
                            borrar.add(vehiculos.indexOf(vehiculo));
                         }
                 }
-                Collections.sort(borrar);
+                
                 for(int i =borrar.size()-1;i>=0;i--)
                 {
                     vehiculos.remove(vehiculos.get(borrar.get(i)));
@@ -297,7 +190,7 @@ public class Main {
                            borrar.add(vehiculos.indexOf(vehiculo));
                         }
                 }
-                Collections.sort(borrar);
+                
                 for(int i =borrar.size()-1;i>=0;i--)
                 {
                     vehiculos.remove(vehiculos.get(borrar.get(i)));
@@ -315,6 +208,120 @@ public class Main {
         
        
      
+    }
+    
+    static public ArrayList<Vehiculo> preguntaMotor(ArrayList<Vehiculo> vehiculos,boolean motor)
+    {
+        ArrayList<Integer> borrar = new ArrayList<Integer>();
+        for(Vehiculo vehiculo : vehiculos)
+        {
+            if(vehiculo.motor != motor)
+            {
+                borrar.add(vehiculos.indexOf(vehiculo));
+            }
+        }
+        
+        for(int i =borrar.size()-1;i>=0;i--)
+        {
+            vehiculos.remove(vehiculos.get(borrar.get(i)));
+        }
+        return vehiculos;
+    }
+    
+    static public ArrayList<Vehiculo> preguntaPuertas(ArrayList<Vehiculo> vehiculos,int numPuertas)
+    {
+        ArrayList<Integer> borrar = new ArrayList<Integer>();
+        for(Vehiculo vehiculo : vehiculos)
+        {   
+            int cont=0;
+            for (int j = 0;j<vehiculo.numPuertas.length; j++) 
+            {
+
+                if(vehiculo.numPuertas[j] == numPuertas)
+                {
+                    cont++;
+                }
+            }
+
+            if (cont==0) 
+            {
+
+                borrar.add(vehiculos.indexOf(vehiculo));
+            } 
+        }
+        
+        for(int i =borrar.size()-1;i>=0;i--)
+        {
+            vehiculos.remove(vehiculos.get(borrar.get(i)));
+        }
+        return vehiculos;
+    }
+    
+    static public ArrayList<Vehiculo> preguntaLlantas(ArrayList<Vehiculo> vehiculos,int numllantas)
+    {
+        ArrayList<Integer> borrar = new ArrayList<Integer>();
+        for(Vehiculo vehiculo : vehiculos)
+        {   
+            if(vehiculo.numllantas != numllantas)
+            {
+               borrar.add(vehiculos.indexOf(vehiculo));
+            }
+        }
+        
+        for(int i =borrar.size()-1;i>=0;i--)
+        {
+            vehiculos.remove(vehiculos.get(borrar.get(i)));
+        }
+        return vehiculos;
+    }
+    
+    static public ArrayList<Vehiculo> preguntaCajones(ArrayList<Vehiculo> vehiculos,boolean cajones)
+    {
+        ArrayList<Integer> borrar = new ArrayList<Integer>();
+        
+        
+        for(Vehiculo vehiculo : vehiculos)
+        {   
+            if(vehiculo.cajon != cajones)
+            {
+               borrar.add(vehiculos.indexOf(vehiculo));
+            }
+        }
+        
+        for(int i =borrar.size()-1;i>=0;i--)
+        {
+            vehiculos.remove(vehiculos.get(borrar.get(i)));
+        }
+        return vehiculos;
+    }
+    
+    static public ArrayList<Vehiculo> preguntaPasajeros(ArrayList<Vehiculo> vehiculos,int numPasajeros)
+    {
+        ArrayList<Integer> borrar = new ArrayList<Integer>();
+        for(Vehiculo vehiculo : vehiculos)
+        {   
+            if(vehiculo.numPasajeros != numPasajeros)
+            {
+               borrar.add(vehiculos.indexOf(vehiculo));
+            }
+        }
+        
+        for(int i =borrar.size()-1;i>=0;i--)
+        {
+            vehiculos.remove(vehiculos.get(borrar.get(i)));
+        }
+        return vehiculos;
+    }
+    
+    static public boolean verificarCantidad(ArrayList<Vehiculo> vehiculos)
+    {
+        if(vehiculos.size()==1)
+        {
+            System.out.println(vehiculos.get(0));
+            System.exit(0);
+            //return false;
+        }
+        return true;
     }
 }      
 
