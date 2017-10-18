@@ -27,6 +27,8 @@ public class menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        sistemasExpertos = new javax.swing.ButtonGroup();
+        motorDeInferencia = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -40,14 +42,18 @@ public class menu extends javax.swing.JFrame {
 
         jLabel1.setText("2.- Seleccione el motor de inferencia ");
 
+        motorDeInferencia.add(jRadioButton1);
         jRadioButton1.setText("Encadenamiento hacia atras");
 
+        motorDeInferencia.add(jRadioButton2);
         jRadioButton2.setText("Encadenamiento hacia adelante");
 
         jLabel2.setText("1.- Seleccione el sistema experto ");
 
+        sistemasExpertos.add(jRadioButton3);
         jRadioButton3.setText("Vehiculos");
 
+        sistemasExpertos.add(jRadioButton4);
         jRadioButton4.setText("Video Juegos");
 
         jToggleButton1.setText("Ejecutar");
@@ -148,5 +154,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.ButtonGroup motorDeInferencia;
+    private javax.swing.ButtonGroup sistemasExpertos;
     // End of variables declaration//GEN-END:variables
 }
